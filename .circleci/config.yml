@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  build:
+    macos:
+      xcode: 14.3.1 
+
+    steps:
+      - checkout
+      - run: xcodebuild build -resolvePackageDependencies -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit"
+      - run: xcodebuild build -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit" -destination generic/platform=macOS
+      - store_test_results:
+          path: test_output
+      - store_artifacts:
+          path: test_output
+          destination: scan-output
+
+workflows:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build
