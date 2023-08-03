@@ -7,4 +7,6 @@ workflows:
             xcode: latest
             cocoapods: default
         scripts:
-            - xcodebuild build -resolvePackageDependencies -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit" -destination generic/platform=macOS
+            - xcodebuild build -resolvePackageDependencies
+            - xcodebuild build -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit" -destination generic/platform=macOS
+
