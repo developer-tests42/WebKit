@@ -7,7 +7,6 @@ jobs:
     steps:
       - checkout
       - run: xcodebuild build -resolvePackageDependencies -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit"
-      - run: xcodebuild build -workspace "WebKit.xcworkspace" -scheme "Everything up to WebKit" -destination generic/platform=macOS
       - store_test_results:
           path: test_output
       - store_artifacts:
